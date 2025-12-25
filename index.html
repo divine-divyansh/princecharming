@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Charming Finder | Discover Your Perfect Match</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts" id="hearts-container"></div>
+    
+    <!-- Notification for email sending status -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <button class="close-notification" onclick="hideNotification()">×</button>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Prince Charming Finder</h1>
+            <p class="tagline">Discover how many men in the world match your dream partner criteria</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="step-counter" id="step-counter">Step 1 of 13</div>
+        </header>
+        
+        <form id="questionnaire-form">
+            <!-- Step 1: Name -->
+            <div class="step active" id="step-1">
+                <h2 class="step-title">Let's Begin Your Journey</h2>
+                <p class="step-subtitle">First, tell us your beautiful name</p>
+                
+                <div style="max-width: 500px; margin: 0 auto;">
+                    <div class="option-box" style="cursor: default; min-height: auto; padding: 30px;">
+                        <div class="option-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div style="width: 100%;">
+                            <label for="user-name" style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark-pink);">Your Name <span class="required">*</span></label>
+                            <input type="text" id="user-name" class="write-input" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <div></div>
+                    <button type="button" class="btn btn-next" id="next-1">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Personality -->
+            <div class="step" id="step-2">
+                <h2 class="step-title">Personality</h2>
+                <p class="step-subtitle">What personality type attracts you the most?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="introvert">
+                        <div class="option-icon">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3>Introvert</h3>
+                        <p>Thoughtful, reserved, deep thinker</p>
+                    </div>
+                    <div class="option-box" data-value="extrovert">
+                        <div class="option-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Extrovert</h3>
+                        <p>Outgoing, social, energetic</p>
+                    </div>
+                    <div class="option-box" data-value="ambivert">
+                        <div class="option-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Ambivert</h3>
+                        <p>Balanced, adaptable, versatile</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-2"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-2">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Body Shape -->
+            <div class="step" id="step-3">
+                <h2 class="step-title">Body Shape</h2>
+                <p class="step-subtitle">What body type do you prefer?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="gym">
+                        <div class="option-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Gym Fit</h3>
+                        <p>Muscular, gym enthusiast</p>
+                    </div>
+                    <div class="option-box" data-value="athlete">
+                        <div class="option-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3>Athletic</h3>
+                        <p>Sporty, agile, active</p>
+                    </div>
+                    <div class="option-box" data-value="martial-arts">
+                        <div class="option-icon">
+                            <i class="fas fa-user-ninja"></i>
+                        </div>
+                        <h3>Martial Arts</h3>
+                        <p>Disciplined, strong, focused</p>
+                    </div>
+                    <div class="option-box" data-value="nerd">
+                        <div class="option-icon">
+                            <i class="fas fa-glasses"></i>
+                        </div>
+                        <h3>Nerd</h3>
+                        <p>Brainy, intellectual, unique</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-3"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-3">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Hobbies -->
+            <div class="step" id="step-4">
+                <h2 class="step-title">Hobbies</h2>
+                <p class="step-subtitle">What hobbies should he enjoy? (Select one or more)</p>
+                
+                <div class="options-container" id="hobbies-container">
+                    <div class="option-box" data-value="music">
+                        <div class="option-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Music</h3>
+                        <p>Plays instrument or loves music</p>
+                    </div>
+                    <div class="option-box" data-value="dance">
+                        <div class="option-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Dance</h3>
+                        <p>Moves gracefully with rhythm</p>
+                    </div>
+                    <div class="option-box" data-value="sports">
+                        <div class="option-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h3>Sports</h3>
+                        <p>Enjoys watching or playing sports</p>
+                    </div>
+                    <div class="option-box" data-value="martial-arts">
+                        <div class="option-icon">
+                            <i class="fas fa-user-ninja"></i>
+                        </div>
+                        <h3>Martial Arts</h3>
+                        <p>Practices self-defense arts</p>
+                    </div>
+                    <div class="option-box" data-value="coding">
+                        <div class="option-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Coding</h3>
+                        <p>Tech-savvy, builds things</p>
+                    </div>
+                    <div class="option-box" data-value="studying">
+                        <div class="option-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Studying</h3>
+                        <p>Always learning new things</p>
+                    </div>
+                    <div class="option-box" data-value="reading">
+                        <div class="option-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Reading</h3>
+                        <p>Loves books and stories</p>
+                    </div>
+                    <div class="option-box" data-value="watching">
+                        <div class="option-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Watching Movies</h3>
+                        <p>Film buff, enjoys cinema</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <label for="hobbies-other" style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark-pink);">Or write your own:</label>
+                    <input type="text" id="hobbies-other" class="write-input" placeholder="Enter other hobbies">
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-4"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-4">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 5: Mountain or Beach -->
+            <div class="step" id="step-5">
+                <h2 class="step-title">Nature Preference</h2>
+                <p class="step-subtitle">Is he a mountain person or beach person?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="mountain">
+                        <div class="option-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>Mountain Person</h3>
+                        <p>Loves hiking, fresh air, heights</p>
+                    </div>
+                    <div class="option-box" data-value="beach">
+                        <div class="option-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h3>Beach Person</h3>
+                        <p>Loves sun, sand, and ocean</p>
+                    </div>
+                    <div class="option-box" data-value="both">
+                        <div class="option-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>Both</h3>
+                        <p>Appreciates all nature</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-5"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-5">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 6: Skin Tone -->
+            <div class="step" id="step-6">
+                <h2 class="step-title">Skin Tone</h2>
+                <p class="step-subtitle">What skin tone do you prefer?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="fair">
+                        <div class="option-icon">
+                            <i class="fas fa-circle" style="color: #f5d0c5;"></i>
+                        </div>
+                        <h3>Fair</h3>
+                        <p>Light complexion</p>
+                    </div>
+                    <div class="option-box" data-value="dark">
+                        <div class="option-icon">
+                            <i class="fas fa-circle" style="color: #8d5524;"></i>
+                        </div>
+                        <h3>Dark</h3>
+                        <p>Dark complexion</p>
+                    </div>
+                    <div class="option-box" data-value="indian">
+                        <div class="option-icon">
+                            <i class="fas fa-circle" style="color: #c68642;"></i>
+                        </div>
+                        <h3>Indian</h3>
+                        <p>Wheatish/medium complexion</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-6"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-6">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 7: Height -->
+            <div class="step" id="step-7">
+                <h2 class="step-title">Height</h2>
+                <p class="step-subtitle">What height do you prefer?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="5ft8">
+                        <div class="option-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <h3>5'8" or taller</h3>
+                        <p>Tall and handsome</p>
+                    </div>
+                    <div class="option-box" data-value="6ft">
+                        <div class="option-icon">
+                            <i class="fas fa-long-arrow-alt-up"></i>
+                        </div>
+                        <h3>6' or taller</h3>
+                        <p>Very tall, tower over you</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-7"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-7">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 8: Hair -->
+            <div class="step" id="step-8">
+                <h2 class="step-title">Hair</h2>
+                <p class="step-subtitle">What hair type do you prefer?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="curly">
+                        <div class="option-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Curly</h3>
+                        <p>Natural curls or waves</p>
+                    </div>
+                    <div class="option-box" data-value="straight">
+                        <div class="option-icon">
+                            <i class="fas fa-minus"></i>
+                        </div>
+                        <h3>Straight</h3>
+                        <p>Smooth, straight hair</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <label for="hair-other" style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark-pink);">Or describe your preference:</label>
+                    <input type="text" id="hair-other" class="write-input" placeholder="e.g., Bald, Wavy, etc.">
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-8"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-8">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 9: Cooking -->
+            <div class="step" id="step-9">
+                <h2 class="step-title">Cooking Skills</h2>
+                <p class="step-subtitle">Should he know how to cook?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="cooks">
+                        <div class="option-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Knows Cooking</h3>
+                        <p>Can prepare delicious meals</p>
+                    </div>
+                    <div class="option-box" data-value="doesnt-cook">
+                        <div class="option-icon">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <h3>Doesn't Cook</h3>
+                        <p>Prefers eating out or ordering</p>
+                    </div>
+                    <div class="option-box" data-value="learning">
+                        <div class="option-icon">
+                            <i class="fas fa-mortar-pestle"></i>
+                        </div>
+                        <h3>Learning</h3>
+                        <p>Willing to learn for you</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-9"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-9">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 10: Guitar -->
+            <div class="step" id="step-10">
+                <h2 class="step-title">Musical Talent</h2>
+                <p class="step-subtitle">Should he be a guitarist?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="guitarist">
+                        <div class="option-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3>Guitarist</h3>
+                        <p>Plays romantic songs for you</p>
+                    </div>
+                    <div class="option-box" data-value="not-guitarist">
+                        <div class="option-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Not a Guitarist</h3>
+                        <p>Other talents are fine too</p>
+                    </div>
+                    <div class="option-box" data-value="any">
+                        <div class="option-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Doesn't Matter</h3>
+                        <p>Music isn't everything</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-10"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-10">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 11: Season Preference -->
+            <div class="step" id="step-11">
+                <h2 class="step-title">Season Preference</h2>
+                <p class="step-subtitle">What season should he love the most?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="winter">
+                        <div class="option-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <h3>Winter Lover</h3>
+                        <p>Cozy sweaters and hot chocolate</p>
+                    </div>
+                    <div class="option-box" data-value="summer">
+                        <div class="option-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>Summer Lover</h3>
+                        <p>Sunshine and outdoor fun</p>
+                    </div>
+                    <div class="option-box" data-value="rain">
+                        <div class="option-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <h3>Rain Lover</h3>
+                        <p>Romantic rainy days</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-11"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-11">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 12: Dominance -->
+            <div class="step" id="step-12">
+                <h2 class="step-title">Relationship Dynamics</h2>
+                <p class="step-subtitle">Should he be dominant or submissive in the relationship?</p>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="dominant">
+                        <div class="option-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Dominant</h3>
+                        <p>Takes charge, protective, leads</p>
+                    </div>
+                    <div class="option-box" data-value="submissive">
+                        <div class="option-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Submissive</h3>
+                        <p>Gentle, follows your lead, supportive</p>
+                    </div>
+                    <div class="option-box" data-value="balanced">
+                        <div class="option-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Balanced</h3>
+                        <p>Equal partnership, switches as needed</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-12"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-next" id="next-12">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 13: Door Opening -->
+            <div class="step" id="step-13">
+                <h2 class="step-title">Chivalry & Manners</h2>
+                <p class="step-subtitle">Should he open doors/gates for you?</p>
+                
+                <div class="question-context">
+                    <i class="fas fa-hands-helping"></i> Especially in situations when you have your hands full with bags, groceries, or other items.
+                </div>
+                
+                <div class="options-container">
+                    <div class="option-box" data-value="opens">
+                        <div class="option-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h3>Opens Doors</h3>
+                        <p>Chivalrous, attentive, gentlemanly</p>
+                    </div>
+                    <div class="option-box" data-value="sometimes">
+                        <div class="option-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3>Sometimes</h3>
+                        <p>When practical or helpful</p>
+                    </div>
+                    <div class="option-box" data-value="not-important">
+                        <div class="option-icon">
+                            <i class="fas fa-door-closed"></i>
+                        </div>
+                        <h3>Not Important</h3>
+                        <p>Modern relationship, doesn't matter</p>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-prev" id="prev-13"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-submit" id="submit-form">Find My Match! <i class="fas fa-heart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="step" id="step-result">
+                <div class="result-container">
+                    <div class="heart-pulse">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2 class="result-title">Your Perfect Match Exists!</h2>
+                    <div class="result-number">1</div>
+                    <p class="result-text">Man in the world exists for you!</p>
+                    <p class="result-subtext">Based on your specific criteria, there's exactly one perfect man in the world who matches all your preferences. He's out there looking for you too! True love is rare and unique - just like your perfect match.</p>
+                    <p class="result-subtext">We've recorded your preferences in our database to help the universe bring you two together!</p>
+                    <button type="button" class="btn btn-submit" id="restart" style="margin-top: 30px;">Start Over <i class="fas fa-redo"></i></button>
+                </div>
+            </div>
+        </form>
+        
+        <footer>
+            <p>Made with <i class="fas fa-heart" style="color: var(--primary-pink);"></i> for all the wonderful women seeking their prince charming</p>
+            <p>© 2023 Prince Charming Finder | All answers are confidential</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
